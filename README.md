@@ -30,12 +30,6 @@ cd terraform_custom_plugin
 vagrant up
 ```
 
-4. Connect to the virtual machine: 
-
-```
-vagrant ssh
-```
-
 ### Preparing the provider
 
 1. Login to the machine: 
@@ -43,24 +37,18 @@ vagrant ssh
 ```
 vagrant ssh
 ```
-
-2. Elevate priviledges: 
-
-```
-sudo su -
-```
-3. Run the following command: 
+2. Run the following command: 
 
 ```
 go get github.com/petems/terraform-provider-extip
 ```
 
-4. Build the custom plugin
+3. Build the custom plugin
 ```
 cd go/src/github.com/petems/terraform-provider-extip/
 make build
 ```
-5. Run the following command: 
+4. Run the following command: 
 
 ```
 #This command will create the directory from which terraform will use our custom plugin
@@ -68,23 +56,23 @@ make build
 mkdir -p /vagrant/terraform.d/plugins/linux_amd64
 ```
 
-6. Copy the plugin binary to the terraform plugin directory: 
+5. Copy the plugin binary to the terraform plugin directory: 
 
 ``` 
 cp ~/go/bin/terraform-provider-extip /vagrant/terraform.d/plugins/linux_amd64/
 ```
-7. Go in the directory where the terraform configuration file and plugin directories are: 
+6. Go in the directory where the terraform configuration file and plugin directories are: 
 
 ```
 cd /vagrant/
 ```
-8. Run the following command to download all providers implemented in the terraform configuration: 
+7. Run the following command to download all providers implemented in the terraform configuration: 
 
 ```
 terraform init
 ```
 
-9. Test if the providers are working by running the following command:
+8. Test if the providers are working by running the following command:
 
 ```
 terraform apply
